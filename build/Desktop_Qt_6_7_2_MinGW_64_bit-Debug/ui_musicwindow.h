@@ -137,7 +137,7 @@ public:
 
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName("groupBox");
-        groupBox->setGeometry(QRect(0, 0, 961, 61));
+        groupBox->setGeometry(QRect(10, 0, 931, 61));
         groupBox->setMaximumSize(QSize(16777215, 70));
         groupBox->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 170, 255, 255), stop:1 rgba(255, 255, 255, 255));\n"
 "\n"
@@ -270,7 +270,7 @@ public:
         groupBox_3->setGeometry(QRect(570, 10, 351, 61));
         doubleSpinBox = new QDoubleSpinBox(groupBox_3);
         doubleSpinBox->setObjectName("doubleSpinBox");
-        doubleSpinBox->setGeometry(QRect(170, 10, 101, 41));
+        doubleSpinBox->setGeometry(QRect(160, 10, 131, 41));
         doubleSpinBox->setMinimumSize(QSize(0, 24));
         doubleSpinBox->setStyleSheet(QString::fromUtf8("font-size:16px;"));
         doubleSpinBox->setFrame(true);

@@ -28,5 +28,13 @@
         <file>images/volumn.bmp</file>
         <file>images/KK.jpg</file>
         <file>images/piano-1655558_1280.jpg</file>
+        <file>images/left.png</file>
+        <file>images/right.png</file>
+        <file>images/reset.png</file>
+        <file>images/turn_left.png</file>
+        <file>images/turn_right.png</file>
+        <file>images/file.png</file>
+        <file>images/large.png</file>
+        <file>images/small.png</file>
     </qresource>
 </RCC>

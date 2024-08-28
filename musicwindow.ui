@@ -135,9 +135,9 @@ font: 18pt &quot;微软雅黑&quot;;
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
-      <width>961</width>
+      <width>931</width>
       <height>61</height>
      </rect>
     </property>
@@ -529,9 +529,9 @@ color:rgb(43, 43, 43)</string>
      <widget class="QDoubleSpinBox" name="doubleSpinBox">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>160</x>
         <y>10</y>
-        <width>101</width>
+        <width>131</width>
         <height>41</height>
        </rect>
       </property>

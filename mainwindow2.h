@@ -27,7 +27,7 @@ public:
     Widget *wid ;
     Audio *audio;
     bool eventFilter(QObject* watched, QEvent* event);
-protected:
+public:
     // 重写父类的方法
     void contextMenuEvent(QContextMenuEvent* event);
     void mousePressEvent(QMouseEvent* event);
@@ -57,7 +57,7 @@ private slots:
 
     void on_pushButton_3_released();
 
-private:
+public:
     Ui::MainWindow2* ui;
 
     // 右键退出和窗口移动

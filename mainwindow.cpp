@@ -1,18 +1,27 @@
 #include "mainwindow.h"
 #include "mainwindow2.h"
 #include "ui_mainwindow.h"
+#include "ui_homewindow.h"
+#include "ui_musicwindow.h"
 #include "videowindow.h"
 #include "chatwindow.h"
 #include "musicwindow.h"
 #include "gpswindow.h"
 #include "picplayerwidget.h"
-#include "homewindow.h"
+
+#include "HomeWindow.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    this->setWindowFlags(Qt::FramelessWindowHint);
     ui->setupUi(this);
     this->videowindow = NULL;
+    this->musicwindow = NULL;
+
+    homewindow = new HomeWindow(this->ui->widget);
+    homewindow->show();
     this->on_pushButton_44_clicked();
 }
 
@@ -41,8 +50,10 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_44_clicked()
 {
-    QMainWindow* home = new HomeWindow(this->ui->widget);
-    home->show();
+    homewindow->raise();
+    if (this->musicwindow) {
+        this->homewindow->ui->label_14->setText(this->musicwindow->ui->labCurMedia->text());
+    }
 }
 
 
@@ -82,7 +93,37 @@ void MainWindow::on_pushButton_19_clicked()
 {
     closeOtherWindows();
     this->ui->widget->show();
-    this->musicwindow = new MusicWindow(this->ui->widget);
+    if (!this->musicwindow) {
+        this->musicwindow = new MusicWindow(this->ui->widget);
+        connect(homewindow, &HomeWindow::playRequested, this, [=]() {
+            if (this->musicwindow->player->isPlaying()) {
+                this->musicwindow->player->pause();
+                this->homewindow->ui->pushButton_8->setStyleSheet("image: url(:/new/prefix1/run.png);");
+            }
+            else {
+                this->musicwindow->player->play();
+                this->homewindow->ui->pushButton_8->setStyleSheet("image: url(:/cont)");
+            }
+        });
+
+        connect(homewindow, &HomeWindow::nextRequested, musicwindow, [=]() {
+            musicwindow->on_btnNext_clicked();
+            if (this->musicwindow) {
+                this->homewindow->ui->label_14->setText(this->musicwindow->ui->labCurMedia->text());
+            }
+        });
+        connect(homewindow, &HomeWindow::previousRequested, musicwindow,[=]() {
+            musicwindow->on_btnPrevious_clicked();
+            if (this->musicwindow) {
+                this->homewindow->ui->label_14->setText(this->musicwindow->ui->labCurMedia->text());
+            }
+        });
+
+
+    }
+
+    this->musicwindow->raise();
+
     this->musicwindow->setParent(this->ui->widget);
     this->musicwindow->show();
 }

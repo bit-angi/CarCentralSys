@@ -14,5 +14,6 @@
         <file>run.png</file>
         <file>music_pic.png</file>
         <file>image.png.png</file>
+        <file>images/star.jpg</file>
     </qresource>
 </RCC>

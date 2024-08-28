@@ -42,7 +42,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>85</y>
+       <y>100</y>
        <width>101</width>
        <height>80</height>
       </rect>
@@ -65,7 +65,7 @@ QPushButton:hover {
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>255</y>
+       <y>300</y>
        <width>101</width>
        <height>80</height>
       </rect>
@@ -89,7 +89,7 @@ QPushButton:hover {
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>340</y>
+       <y>400</y>
        <width>101</width>
        <height>80</height>
       </rect>
@@ -113,7 +113,7 @@ QPushButton:hover {
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>425</y>
+       <y>500</y>
        <width>101</width>
        <height>80</height>
       </rect>
@@ -123,30 +123,6 @@ QPushButton:hover {
 
 QPushButton {
 image: url(:/new/prefix1/news.png);
-}
-
-QPushButton:hover {
-	background-color:rgb(0, 0, 58);
-}</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_18">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>510</y>
-       <width>101</width>
-       <height>80</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
-
-QPushButton {
-image: url(:/new/prefix1/icon_media_image.png);
 }
 
 QPushButton:hover {
@@ -186,7 +162,7 @@ QPushButton:hover {
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>170</y>
+       <y>200</y>
        <width>101</width>
        <height>80</height>
       </rect>
@@ -204,8 +180,8 @@ QPushButton:hover {
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="pic.qrc">
-       <normaloff>:/new/prefix1/music_pic.png</normaloff>:/new/prefix1/music_pic.png</iconset>
+      <iconset resource="res.qrc">
+       <normaloff>:/musicicon.png</normaloff>:/musicicon.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -248,7 +224,7 @@ border-radius: 15px;</string>
   </widget>
  </widget>
  <resources>
-  <include location="pic.qrc"/>
+  <include location="res.qrc"/>
  </resources>
  <connections/>
 </ui>

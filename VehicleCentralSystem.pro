@@ -15,6 +15,7 @@ SOURCES += \
     gpswindow.cpp \
     homewindow.cpp \
     http.cpp \
+    littlepicwidget.cpp \
     login.cpp \
     lrcwidget.cpp \
     main.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     chatwindow.h \
     gpswindow.h \
     homewindow.h \
+    littlepicwidget.h \
     login.h \
     lrcwidget.h \
     mainwindow.h \
@@ -55,6 +57,7 @@ FORMS += \
     chatwindow.ui \
     gpswindow.ui \
     homewindow.ui \
+    littlepicwidget.ui \
     login.ui \
     lrcwidget.ui \
     mainwindow.ui \
@@ -73,6 +76,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Resources.qrc \
+    background.qrc \
     img.qrc \
     pic.qrc \
     res.qrc \

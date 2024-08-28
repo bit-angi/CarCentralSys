@@ -65,7 +65,15 @@ public:
     int cropY;
     int cropWidth;
     int cropHeight;
-     void setCropParameters(int x, int y, int width, int height);
+    void setCropParameters(int x, int y, int width, int height);
+    void setZoomIndex(int zoomIndex);
+    // 定义信号
+    signals:
+        void informationRequested(const QString &info);
+
+
+
+
 
 protected:
     // 重写绘制事件，用于绘制地图和路线
@@ -104,11 +112,14 @@ private:
         > PriorityQueue;
     // 成员变量用于存储路径长度和起点终点坐标
     QVector<QPointF> pathPoints; // 用于存储最短路径上的点
-    double pathLength;           // 用于存储路径长度
+    double pathLength=0;           // 用于存储路径长度
 
-    // 绘制路径的功能
-    void drawShortestPath(const QVector<qint64> &path);
     double calculatePathLength(const QVector<qint64> &path);
+    QString generateTravelInfo(double length);
+
+
+    int currentZoomIndex;  // 用于存储 zoomIndex 的成员变量
+
 
 
 

@@ -300,6 +300,7 @@ Makefile: ../../VehicleCentralSystem.pro E:/qt/6.7.2/mingw_64/mkspecs/win32-g++/
 		E:/qt/6.7.2/mingw_64/lib/Qt6EntryPoint.prl \
 		E:/qt/6.7.2/mingw_64/mkspecs/features/build_pass.prf \
 		../../Resources.qrc \
+		../../background.qrc \
 		../../img.qrc \
 		../../pic.qrc \
 		../../res.qrc \
@@ -535,6 +536,7 @@ E:/qt/6.7.2/mingw_64/lib/Qt6Core.prl:
 E:/qt/6.7.2/mingw_64/lib/Qt6EntryPoint.prl:
 E:/qt/6.7.2/mingw_64/mkspecs/features/build_pass.prf:
 ../../Resources.qrc:
+../../background.qrc:
 ../../img.qrc:
 ../../pic.qrc:
 ../../res.qrc:

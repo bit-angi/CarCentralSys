@@ -17,25 +17,45 @@
 
 GPSWindow::GPSWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::GPSWindow)
+    ui(new Ui::GPSWindow),
+    model(new QStringListModel(this))
 {
-    setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
     ui->setupUi(this);
 
     // 初始化时加载OSM文件
     connect(ui->searchLineEdit, &QLineEdit::textChanged, this, &GPSWindow::onSearchTextChanged);
-
     connect(ui->jisuan, &QPushButton::clicked, [this]() {
         QString startPlace = ui->startedit->text();
         QString endPlace = ui->endedit->text();
         ui->widget->calculateAndDisplayShortestPath(startPlace, endPlace);
     });
     connect(ui->panCheckBox, &QCheckBox::toggled, ui->widget, &MapWidget::setPanMode);
+    setWindowFlags(Qt::FramelessWindowHint);
+    ui->listView->setModel(model);
+
+    connect(ui->widget, &MapWidget::informationRequested, this, &GPSWindow::addInformation);
+    connect(ui->clearbn, &QPushButton::clicked, this, &GPSWindow::clearListView);
+
+    ui->widget->setZoomIndex(currentZoomIndex);
+    addInformation("消息盒子：===============");
+
+    // 初始化 completer
+    setupSearchCompleter();
 
     loadOSMFile(":/map");  // 这里替换为实际的OSM文件路径
     QString fileName = QDir::currentPath() + "/map_image.png";
     fetchAndSaveMap(fileName);
 
+}
+
+void GPSWindow::addInformation(const QString &info)
+{
+    QStringList list = model->stringList();
+    list << info;  // 添加信息
+    model->setStringList(list);  // 更新模型
+}
+void GPSWindow::clearListView() {
+    model->removeRows(0, model->rowCount());
 }
 void GPSWindow::fetchAndSaveMap(const QString &fileName) {
     // 创建网络管理器
@@ -242,20 +262,11 @@ void GPSWindow::loadOSMFile(const QString &fileName) {
 }
 
 
-void GPSWindow::onSearchTextChanged(const QString &text) {
-    // 筛选出符合搜索条件的 ways
-    for (const auto &way : allWays) {
-        if (way.tagInfo.contains(text, Qt::CaseInsensitive)&&text!="") {
-            filteredWays.append(way);
-        }
-    }
-
-    ui->widget->setFilteredWays(filteredWays);
-}
 void GPSWindow::on_zoomInButton_clicked() {
     qDebug() << "Zoom In Button Clicked";
     if (currentZoomIndex <9) {
         currentZoomIndex++;
+        ui->widget->setZoomIndex(currentZoomIndex);
         updateMap();
     }
 }
@@ -264,11 +275,85 @@ void GPSWindow::on_zoomOutButton_clicked() {
     qDebug() << "Zoom In Button Clicked";
     if (currentZoomIndex > 0) {
         currentZoomIndex--;
+        ui->widget->setZoomIndex(currentZoomIndex);
         updateMap();
     }
 }
 
+void GPSWindow::setupSearchCompleter() {
+    // 创建独立的 QStringListModel
+    QStringListModel *searchModel = new QStringListModel(this);
+    QStringListModel *startModel = new QStringListModel(this);
+    QStringListModel *endModel = new QStringListModel(this);
 
+    // 创建独立的 QCompleter 并设置模型
+    QCompleter *searchCompleter = new QCompleter(this);
+    searchCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+    searchCompleter->setCompletionMode(QCompleter::PopupCompletion);
+    searchCompleter->setFilterMode(Qt::MatchContains);
+    searchCompleter->setModel(searchModel);
+
+    QCompleter *startCompleter = new QCompleter(this);
+    startCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+    startCompleter->setCompletionMode(QCompleter::PopupCompletion);
+    startCompleter->setFilterMode(Qt::MatchContains);
+    startCompleter->setModel(startModel);
+
+    QCompleter *endCompleter = new QCompleter(this);
+    endCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+    endCompleter->setCompletionMode(QCompleter::PopupCompletion);
+    endCompleter->setFilterMode(Qt::MatchContains);
+    endCompleter->setModel(endModel);
+
+    // 将 QCompleter 关联到 QLineEdit
+    ui->searchLineEdit->setCompleter(searchCompleter);
+    ui->startedit->setCompleter(startCompleter);
+    ui->endedit->setCompleter(endCompleter);
+
+    // 连接每个输入框的 textChanged 信号到对应的槽函数
+    connect(ui->searchLineEdit, &QLineEdit::textChanged, this, &GPSWindow::onSearchTextChanged);
+    connect(ui->startedit, &QLineEdit::textChanged, this, &GPSWindow::onStartEditTextChanged);
+    connect(ui->endedit, &QLineEdit::textChanged, this, &GPSWindow::onEndEditTextChanged);
+}
+
+void GPSWindow::onSearchTextChanged(const QString &text) {
+    updateSuggestions(text, qobject_cast<QStringListModel *>(ui->searchLineEdit->completer()->model()));
+    ui->widget->setFilteredWays(filteredWays);
+}
+
+void GPSWindow::onStartEditTextChanged(const QString &text) {
+    updateSuggestions(text, qobject_cast<QStringListModel *>(ui->startedit->completer()->model()));
+}
+
+void GPSWindow::onEndEditTextChanged(const QString &text) {
+    updateSuggestions(text, qobject_cast<QStringListModel *>(ui->endedit->completer()->model()));
+}
+
+void GPSWindow::updateSuggestions(const QString &text, QStringListModel *model) {
+    filteredWays.clear();
+    QStringList suggestions;
+    QSet<QString> uniqueSuggestions;  // 使用 QSet 来自动去重
+
+    for (const auto &way : allWays) {
+        if (way.tagInfo.contains(text, Qt::CaseInsensitive) && !text.isEmpty()) {
+            filteredWays.append(way);
+
+            // 只取第一个逗号前面的内容
+            QString firstPartOfTagInfo = way.tagInfo.section(',', 0, 0);
+
+            // 如果这个内容是新的（不重复），则添加到建议列表中
+            if (!uniqueSuggestions.contains(firstPartOfTagInfo)) {
+                uniqueSuggestions.insert(firstPartOfTagInfo);
+                suggestions.append(firstPartOfTagInfo);
+            }
+        }
+    }
+
+    // 更新 completer 的模型
+    if (model) {
+        model->setStringList(suggestions);
+    }
+}
 void GPSWindow::updateMap() {
     double zoomFactor = zoomLevels[currentZoomIndex];
     qDebug() << "Current zoom factor:" << zoomFactor;

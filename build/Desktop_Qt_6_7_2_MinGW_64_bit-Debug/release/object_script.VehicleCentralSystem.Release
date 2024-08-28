@@ -4,6 +4,7 @@ release/chatwindow.o
 release/gpswindow.o
 release/homewindow.o
 release/http.o
+release/littlepicwidget.o
 release/login.o
 release/lrcwidget.o
 release/main.o
@@ -17,6 +18,7 @@ release/speech.o
 release/videowindow.o
 release/widget.o
 release/qrc_Resources.o
+release/qrc_background.o
 release/qrc_img.o
 release/qrc_pic.o
 release/qrc_res.o
@@ -26,6 +28,7 @@ release/moc_MapWidget.o
 release/moc_chatwindow.o
 release/moc_gpswindow.o
 release/moc_homewindow.o
+release/moc_littlepicwidget.o
 release/moc_login.o
 release/moc_lrcwidget.o
 release/moc_mainwindow.o

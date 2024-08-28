@@ -3,7 +3,8 @@
 
 
 #include <QMainWindow>
-
+#include "musicwindow.h"
+#include "homewindow.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -21,8 +22,9 @@ public:
     QMainWindow *chatwindow;
     QMainWindow *videowindow;
     QMainWindow *gpswindow;
+    HomeWindow* homewindow;
     QWidget *picwindow;
-    QMainWindow *musicwindow;
+    MusicWindow *musicwindow;
 private slots:
     void on_pushButton_clicked();
 
@@ -39,7 +41,7 @@ private slots:
 
     void on_pushButton_19_clicked();
 
-private:
+public:
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

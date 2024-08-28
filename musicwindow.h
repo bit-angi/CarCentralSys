@@ -17,7 +17,7 @@ QT_END_NAMESPACE
 class MusicWindow : public QMainWindow
 {
     Q_OBJECT
-private:
+public:
     QMediaPlayer *player;
     lrcwidget *lrcWidget;
     bool loopPay = true;
@@ -36,7 +36,7 @@ public:
     ~MusicWindow();
 
 
-private slots:
+public slots:
 
 
 
@@ -109,8 +109,7 @@ private slots:
     void on_love_button_clicked();
 
     void on_listWidget_2_itemClicked(QListWidgetItem *item);
-
-private:
+public:
     void displayCurrentTrackInfo();
     QJsonArray readFavorites();
     void loadFavorites();

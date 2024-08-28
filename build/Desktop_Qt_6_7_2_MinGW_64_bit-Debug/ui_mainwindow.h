@@ -29,7 +29,6 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_16;
     QPushButton *pushButton_2;
-    QPushButton *pushButton_18;
     QPushButton *pushButton_44;
     QPushButton *pushButton_19;
     QLabel *label_5;
@@ -52,7 +51,7 @@ public:
         frame_2->setLineWidth(0);
         pushButton_13 = new QPushButton(frame_2);
         pushButton_13->setObjectName("pushButton_13");
-        pushButton_13->setGeometry(QRect(0, 85, 101, 80));
+        pushButton_13->setGeometry(QRect(0, 100, 101, 80));
         pushButton_13->setStyleSheet(QString::fromUtf8("\n"
 "QPushButton {\n"
 "image: url(:/new/prefix1/map.png);\n"
@@ -63,7 +62,7 @@ public:
 "}"));
         pushButton = new QPushButton(frame_2);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(0, 255, 101, 80));
+        pushButton->setGeometry(QRect(0, 300, 101, 80));
         pushButton->setStyleSheet(QString::fromUtf8("\n"
 "\n"
 "QPushButton {\n"
@@ -75,7 +74,7 @@ public:
 "}"));
         pushButton_16 = new QPushButton(frame_2);
         pushButton_16->setObjectName("pushButton_16");
-        pushButton_16->setGeometry(QRect(0, 340, 101, 80));
+        pushButton_16->setGeometry(QRect(0, 400, 101, 80));
         pushButton_16->setStyleSheet(QString::fromUtf8("\n"
 "\n"
 "QPushButton {\n"
@@ -87,23 +86,11 @@ public:
 "}"));
         pushButton_2 = new QPushButton(frame_2);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(0, 425, 101, 80));
+        pushButton_2->setGeometry(QRect(0, 500, 101, 80));
         pushButton_2->setStyleSheet(QString::fromUtf8("\n"
 "\n"
 "QPushButton {\n"
 "image: url(:/new/prefix1/news.png);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"	background-color:rgb(0, 0, 58);\n"
-"}"));
-        pushButton_18 = new QPushButton(frame_2);
-        pushButton_18->setObjectName("pushButton_18");
-        pushButton_18->setGeometry(QRect(0, 510, 101, 80));
-        pushButton_18->setStyleSheet(QString::fromUtf8("\n"
-"\n"
-"QPushButton {\n"
-"image: url(:/new/prefix1/icon_media_image.png);\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -122,7 +109,7 @@ public:
 "}"));
         pushButton_19 = new QPushButton(frame_2);
         pushButton_19->setObjectName("pushButton_19");
-        pushButton_19->setGeometry(QRect(0, 170, 101, 80));
+        pushButton_19->setGeometry(QRect(0, 200, 101, 80));
         pushButton_19->setStyleSheet(QString::fromUtf8("\n"
 "\n"
 "\n"
@@ -131,7 +118,7 @@ public:
 "	background-color:rgb(0, 0, 58);\n"
 "}"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/new/prefix1/music_pic.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        icon.addFile(QString::fromUtf8(":/musicicon.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         pushButton_19->setIcon(icon);
         pushButton_19->setIconSize(QSize(75, 75));
         label_5 = new QLabel(centralwidget);
@@ -157,7 +144,6 @@ public:
         pushButton->setText(QString());
         pushButton_16->setText(QString());
         pushButton_2->setText(QString());
-        pushButton_18->setText(QString());
         pushButton_44->setText(QString());
         pushButton_19->setText(QString());
         label_5->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));

@@ -116,7 +116,6 @@ void MapWidget::paintEvent(QPaintEvent *event) {
         for (int i = 0; i < way.nodes.size() - 1; i++) {
             const Coordinates &start = way.nodes[i];
             const Coordinates &end = way.nodes[i + 1];
-
             painter.drawLine(QPointF(start.screenX + mapOffset.x() * moveSpeedFactor,
                                      start.screenY + mapOffset.y() * moveSpeedFactor),
                              QPointF(end.screenX + mapOffset.x() * moveSpeedFactor,
@@ -132,12 +131,6 @@ void MapWidget::paintEvent(QPaintEvent *event) {
 
         // 获取 tagInfo 中第一个逗号前的内容
         QString firstPartOfTagInfo = closestWay.tagInfo.section(',', 0, 0);
-
-        // 设置画笔颜色为黑色用于绘制文本
-        painter.setPen(Qt::black);
-        painter.drawText(QPointF(clickPos.screenX + mapOffset.x() * moveSpeedFactor + 10,
-                                 clickPos.screenY + mapOffset.y() * moveSpeedFactor),
-                         QString("位置信息: %1").arg(firstPartOfTagInfo));
     }
 
     // 只绘制搜索结果中的第一个点，添加偏移量
@@ -180,11 +173,6 @@ void MapWidget::paintEvent(QPaintEvent *event) {
             }
         }
 
-        // 计算路径长度
-        if(!path.isEmpty()){
-            pathLength = calculatePathLength(path);
-        }
-
         // 绘制路径的起点和终点，添加偏移量
         if (path.size() > 0) {
             painter.setBrush(Qt::yellow);
@@ -204,11 +192,6 @@ void MapWidget::paintEvent(QPaintEvent *event) {
             if (endCoord) {
                 painter.drawEllipse(QPointF(endCoord->screenX + mapOffset.x() * moveSpeedFactor,
                                             endCoord->screenY + mapOffset.y() * moveSpeedFactor), 5, 5);
-
-                // 绘制路径长度，添加偏移量
-                painter.drawText(QPointF(endCoord->screenX + mapOffset.x() * moveSpeedFactor + 10,
-                                         endCoord->screenY + mapOffset.y() * moveSpeedFactor - 10),
-                                 QString("路径长度: %1 米").arg(pathLength));
             }
         }
     }
@@ -216,7 +199,11 @@ void MapWidget::paintEvent(QPaintEvent *event) {
 
 
 void MapWidget::mouseMoveEvent(QMouseEvent *event) {
-    if (panMode && event->buttons() & Qt::LeftButton) {
+    if (panMode && event->buttons() & Qt::LeftButton&&currentZoomIndex>=2) {
+        if(currentZoomIndex<=1){
+            emit informationRequested("提示：请放大后尝试。");
+            return;
+        }
         QPointF delta = event->pos() - lastMousePos;  // 计算移动的距离
         mapOffset += delta;  // 更新地图的偏移量
         lastMousePos = event->pos();  // 更新最后一次鼠标位置
@@ -241,6 +228,10 @@ void MapWidget::mouseMoveEvent(QMouseEvent *event) {
 
 void MapWidget::mousePressEvent(QMouseEvent *event) {
     if (panMode) {
+        if(currentZoomIndex<=1){
+            emit informationRequested("提示：请放大后尝试。");
+            return;
+        }
         lastMousePos = event->pos();  // 记录鼠标按下时的位置
     } else {
         // 原有点击事件处理代码
@@ -289,6 +280,10 @@ void MapWidget::findClosestWay(const Coordinates &clickPos) {
             }
         }
     }
+    QString firstPartOfTagInfo = closestWay.tagInfo.section(',', 0, 0);
+    QString s = QString("点击位置：%1").arg(firstPartOfTagInfo);
+    emit informationRequested(s);
+
 }
 
 
@@ -340,7 +335,6 @@ double MapWidget::calculateDistance(const Coordinates &start, const Coordinates 
 
 QVector<qint64> MapWidget::findShortestPath(const QString &startPlace, const QString &endPlace) {
     qDebug() << QString("查找最短路径: 起点: %1, 终点: %2").arg(startPlace).arg(endPlace);
-
     qint64 startId = findNodeIdByPlaceName(startPlace);
     qint64 endId = findNodeIdByPlaceName(endPlace);
 
@@ -426,11 +420,19 @@ QVector<qint64> MapWidget::dijkstraShortestPath(qint64 startId, qint64 endId) {
     } else {
         qDebug() << "路径计算完成。";
     }
+    calculatePathLength(path);
 
     return path;
 }
 
 void MapWidget::calculateAndDisplayShortestPath(const QString &startPlace, const QString &endPlace) {
+    if(startPlace.isEmpty()||endPlace.isEmpty())
+    {
+        return;
+    }
+    QString s1=QString("从起点: %1,\n").arg(startPlace);
+    QString s2=QString("到终点: %2。").arg(endPlace);
+    emit informationRequested(s1+s2);
     qint64 startId = findNodeIdByPlaceName(startPlace);
     qint64 endId = findNodeIdByPlaceName(endPlace);
 
@@ -449,22 +451,7 @@ void MapWidget::calculateAndDisplayShortestPath(const QString &startPlace, const
     qDebug() << "Path found:" << path;
     update();  // 触发重绘，以显示路径
 }
-void MapWidget::drawShortestPath(const QVector<qint64> &path) {
-    pathPoints.clear();
 
-    // 将路径点转换为屏幕坐标并存储
-    for (qint64 nodeId : path) {
-        for (const Way &way : ways) {
-            for (const Coordinates &node : way.nodes) {
-                if (node.id == nodeId) {
-                    pathPoints.append(QPointF(node.screenX, node.screenY));
-                    break;
-                }
-            }
-        }
-    }
-    update();  // 触发重绘
-}
 
 double MapWidget::calculatePathLength(const QVector<qint64> &path) {
     double length = 0.0;
@@ -481,5 +468,38 @@ double MapWidget::calculatePathLength(const QVector<qint64> &path) {
             }
         }
     }
+    if(length==0){
+        emit informationRequested("当前输入无法规划路线");
+    }else{
+        emit informationRequested("预计：\n");
+        QString s=generateTravelInfo(length);
+        emit informationRequested(s);
+    }
     return length;
 }
+QString MapWidget::generateTravelInfo(double length) {
+    // 将长度转换为公里
+    double lengthKm = length / 1000.0;
+
+    // 计算步行预计时间（假设步行速度为每小时 5 公里）
+    double walkingSpeedKph = 5.0;
+    double walkingTimeHours = lengthKm / walkingSpeedKph;
+    double walkingTimeMinutes = walkingTimeHours * 60;
+    QString walkingTime = QString("步行预计时间: %1 分钟").arg(walkingTimeMinutes, 0, 'f', 0);
+
+    // 计算打车预计费用（假设打车速度为每小时 40 公里，费用为每公里 2 元，起步价为 10 元）
+    double taxiFarePerKm = 2.0;
+    double baseFare = 10.0;
+    double taxiCost = baseFare + (lengthKm * taxiFarePerKm);
+    QString taxiCostInfo = QString("打车预计费用: %1 元").arg(taxiCost, 0, 'f', 2);
+
+    // 构建信息字符串
+    QString lengthInfo = QString("路程长度: %1 公里").arg(lengthKm, 0, 'f', 2);
+    QString newInfo = lengthInfo + "\n" + walkingTime + "\n" + taxiCostInfo;
+
+    return newInfo;
+}
+void MapWidget::setZoomIndex(int zoomIndex) {
+    currentZoomIndex = zoomIndex;
+}
+

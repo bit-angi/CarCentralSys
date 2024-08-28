@@ -14,23 +14,39 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 226);</string>
+   <string notr="true">background-color: rgba(255, 255, 255,0);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(0, 0, 226);</string>
+    <string notr="true">background-color:rgba(0, 0, 226,0);</string>
    </property>
-   <widget class="QFrame" name="frame">
+   <widget class="QPushButton" name="pushButton_7">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>20</y>
-      <width>221</width>
-      <height>491</height>
+      <x>930</x>
+      <y>0</y>
+      <width>30</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:transparent</string>
+     <string notr="true">image: url(:/new/prefix1/tools.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>311</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
@@ -38,13 +54,30 @@
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>311</width>
+       <height>651</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: qlineargradient(spread:pad, x1:0.505682, y1:0.426, x2:0.511, y2:1, stop:0 rgba(21，25，33，1), stop:0.744318 rgba(32, 33, 44, 0));
+border-radius: 15px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>120</y>
-       <width>201</width>
-       <height>131</height>
+       <y>170</y>
+       <width>291</width>
+       <height>191</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -55,13 +88,13 @@ background-color: rgba(255, 255, 255,0);</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_15">
+    <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>230</y>
-       <width>201</width>
-       <height>131</height>
+       <y>340</y>
+       <width>291</width>
+       <height>181</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -72,13 +105,13 @@ background-color: rgba(255, 255, 255,0);</string>
       <string/>
      </property>
     </widget>
-    <widget class="QFrame" name="frame_5">
+    <widget class="QFrame" name="frame_3">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>140</y>
-       <width>211</width>
-       <height>62</height>
+       <y>200</y>
+       <width>251</width>
+       <height>121</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -91,13 +124,13 @@ color: rgb(255, 255, 255);</string>
      <property name="frameShadow">
       <enum>QFrame::Shadow::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_16">
+     <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>80</x>
         <y>0</y>
-        <width>61</width>
-        <height>31</height>
+        <width>91</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
@@ -107,16 +140,16 @@ color: rgb(255, 255, 255);</string>
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;北京市&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;北京市&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_17">
+     <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>30</y>
-        <width>54</width>
-        <height>10</height>
+        <y>50</y>
+        <width>131</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="font">
@@ -125,29 +158,16 @@ color: rgb(255, 255, 255);</string>
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;今日天气晴朗&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;今日天气晴朗&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_18">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>50</y>
-        <width>33</width>
-        <height>12</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;湿度……&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>44</width>
-        <height>27</height>
+        <width>71</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
@@ -158,105 +178,30 @@ color: rgb(255, 255, 255);</string>
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;21℃&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; color:#ffffff;&quot;&gt;21℃&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QFrame" name="frame_6">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>260</y>
-       <width>91</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255,0);
-color: rgb(255, 255, 255);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_19">
+     <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
-        <width>108</width>
-        <height>18</height>
+        <y>80</y>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <family>System</family>
-        <pointsize>9</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
       <property name="text">
-       <string>Fallin' love</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_11">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>40</y>
-        <width>21</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/new/prefix1/run.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_12">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>40</y>
-        <width>21</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/new/prefix1/next.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_13">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>40</y>
-        <width>21</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/new/prefix1/last.png);</string>
-      </property>
-      <property name="text">
-       <string/>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;湿度……&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QLabel" name="label_20">
+    <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>260</y>
-       <width>50</width>
-       <height>50</height>
+       <x>180</x>
+       <y>380</y>
+       <width>61</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -271,13 +216,13 @@ box-shadow: -100px -100px 1px rgba(0, 0, 0, 1);
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="time_label_2">
+    <widget class="QLabel" name="time_label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>60</y>
-       <width>241</width>
-       <height>61</height>
+       <y>70</y>
+       <width>291</width>
+       <height>101</height>
       </rect>
      </property>
      <property name="font">
@@ -295,14 +240,14 @@ font: 700 24pt &quot;Microsoft YaHei UI&quot;;
 </string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:700;&quot;&gt;00:00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;00:00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="day_label_2">
+    <widget class="QLabel" name="day_label">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>40</y>
+       <x>20</x>
+       <y>20</y>
        <width>131</width>
        <height>16</height>
       </rect>
@@ -321,54 +266,175 @@ font: 9pt &quot;Microsoft YaHei UI&quot;;
 color: rgb(32, 59, 237);</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt&quot;&gt;2024-08-20&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;2024-08-20&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <zorder>label_3</zorder>
-    <zorder>label_15</zorder>
-    <zorder>frame_5</zorder>
-    <zorder>frame_6</zorder>
-    <zorder>label_20</zorder>
-    <zorder>day_label_2</zorder>
-    <zorder>time_label_2</zorder>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>0</y>
-      <width>721</width>
-      <height>611</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.505682, y1:0.426, x2:0.511, y2:1, stop:0 rgba(21，25，33，1), stop:1 rgba(32, 33, 44, 0));
-border-radius: 15px;</string>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>370</y>
+       <width>151</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>System</family>
+       <pointsize>9</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Fallin' love&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>430</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_10">
+        <property name="styleSheet">
+         <string notr="true">image: url(:/new/prefix1/last.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="styleSheet">
+         <string notr="true">image: url(:/new/prefix1/run.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="styleSheet">
+         <string notr="true">image: url(:/new/prefix1/next.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <zorder>label_4</zorder>
+    <zorder>label_9</zorder>
+    <zorder>label_2</zorder>
+    <zorder>frame_3</zorder>
+    <zorder>label_13</zorder>
+    <zorder>time_label</zorder>
+    <zorder>day_label</zorder>
+    <zorder>label_14</zorder>
+    <zorder>horizontalLayoutWidget</zorder>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>0</y>
-      <width>231</width>
-      <height>651</height>
+      <x>390</x>
+      <y>30</y>
+      <width>541</width>
+      <height>381</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.505682, y1:0.426, x2:0.511, y2:1, stop:0 rgba(21，25，33，1), stop:1 rgba(32, 33, 44, 0));
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.505682, y1:0.426, x2:0.511, y2:1, stop:0 rgba(21，25，33，1), stop:0.744318 rgba(32, 33, 44, 0));
 border-radius: 15px;</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <zorder>label_5</zorder>
-   <zorder>frame</zorder>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>40</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>-160</x>
+      <y>-100</y>
+      <width>1200</width>
+      <height>700</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/new/prefix1/images/star.jpg);</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="pic_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>50</y>
+      <width>501</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent</string>
+    </property>
+   </widget>
    <zorder>label_7</zorder>
+   <zorder>pushButton_7</zorder>
+   <zorder>frame</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_6</zorder>
+   <zorder>pic_widget</zorder>
   </widget>
  </widget>
  <resources/>

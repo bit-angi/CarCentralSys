@@ -16,6 +16,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -29,6 +30,16 @@ class Ui_GPSWindow
 {
 public:
     QWidget *centralwidget;
+    MapWidget *widget;
+    QWidget *widget_2;
+    QWidget *horizontalLayoutWidget_3;
+    QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer_2;
+    QLabel *label;
+    QPushButton *clearbn;
+    QSpacerItem *horizontalSpacer_3;
+    QWidget *widget_3;
+    QListView *listView;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QFrame *frame_2;
@@ -42,13 +53,13 @@ public:
     QFrame *frame;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_4;
+    QLabel *label_2;
     QLineEdit *searchLineEdit;
-    QPushButton *pushButton;
     QSpacerItem *horizontalSpacer;
     QPushButton *zoomOutButton;
     QPushButton *zoomInButton;
     QCheckBox *panCheckBox;
-    MapWidget *widget;
 
     void setupUi(QMainWindow *GPSWindow)
     {
@@ -57,6 +68,61 @@ public:
         GPSWindow->resize(960, 600);
         centralwidget = new QWidget(GPSWindow);
         centralwidget->setObjectName("centralwidget");
+        widget = new MapWidget(centralwidget);
+        widget->setObjectName("widget");
+        widget->setGeometry(QRect(0, 80, 961, 561));
+        QFont font;
+        font.setPointSize(16);
+        widget->setFont(font);
+        widget->setStyleSheet(QString::fromUtf8(""));
+        widget_2 = new QWidget(widget);
+        widget_2->setObjectName("widget_2");
+        widget_2->setGeometry(QRect(0, 0, 301, 211));
+        widget_2->setStyleSheet(QString::fromUtf8("    background-color: #D0E8F2;\n"
+"    border-radius: 10px;"));
+        horizontalLayoutWidget_3 = new QWidget(widget_2);
+        horizontalLayoutWidget_3->setObjectName("horizontalLayoutWidget_3");
+        horizontalLayoutWidget_3->setGeometry(QRect(70, 170, 152, 31));
+        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_2);
+
+        label = new QLabel(horizontalLayoutWidget_3);
+        label->setObjectName("label");
+        QFont font1;
+        font1.setPointSize(12);
+        font1.setBold(true);
+        label->setFont(font1);
+        label->setStyleSheet(QString::fromUtf8("color: black"));
+
+        horizontalLayout_3->addWidget(label);
+
+        clearbn = new QPushButton(horizontalLayoutWidget_3);
+        clearbn->setObjectName("clearbn");
+        QFont font2;
+        font2.setPointSize(15);
+        clearbn->setFont(font2);
+        clearbn->setStyleSheet(QString::fromUtf8("image: url(:/delete.png);"));
+
+        horizontalLayout_3->addWidget(clearbn);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_3);
+
+        widget_3 = new QWidget(widget_2);
+        widget_3->setObjectName("widget_3");
+        widget_3->setGeometry(QRect(10, 10, 281, 151));
+        widget_3->setStyleSheet(QString::fromUtf8(" background-color: white;"));
+        listView = new QListView(widget_3);
+        listView->setObjectName("listView");
+        listView->setGeometry(QRect(10, 10, 261, 131));
+        listView->setStyleSheet(QString::fromUtf8("background-color: white;\n"
+"color: black;\n"
+"font-size: 12pt;"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
         verticalLayoutWidget->setGeometry(QRect(1, 0, 961, 81));
@@ -69,15 +135,15 @@ public:
         frame_2->setFrameShadow(QFrame::Shadow::Raised);
         horizontalLayoutWidget_2 = new QWidget(frame_2);
         horizontalLayoutWidget_2->setObjectName("horizontalLayoutWidget_2");
-        horizontalLayoutWidget_2->setGeometry(QRect(9, 0, 941, 41));
+        horizontalLayoutWidget_2->setGeometry(QRect(0, 0, 951, 41));
         horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         startlabel = new QLabel(horizontalLayoutWidget_2);
         startlabel->setObjectName("startlabel");
-        QFont font;
-        font.setPointSize(15);
-        startlabel->setFont(font);
+        QFont font3;
+        font3.setPointSize(12);
+        startlabel->setFont(font3);
 
         horizontalLayout_2->addWidget(startlabel);
 
@@ -88,7 +154,7 @@ public:
 
         endlabel = new QLabel(horizontalLayoutWidget_2);
         endlabel->setObjectName("endlabel");
-        endlabel->setFont(font);
+        endlabel->setFont(font3);
 
         horizontalLayout_2->addWidget(endlabel);
 
@@ -99,6 +165,7 @@ public:
 
         jisuan = new QPushButton(horizontalLayoutWidget_2);
         jisuan->setObjectName("jisuan");
+        jisuan->setFont(font3);
 
         horizontalLayout_2->addWidget(jisuan);
 
@@ -115,15 +182,20 @@ public:
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_4);
+
+        label_2 = new QLabel(horizontalLayoutWidget);
+        label_2->setObjectName("label_2");
+        label_2->setFont(font3);
+
+        horizontalLayout->addWidget(label_2);
+
         searchLineEdit = new QLineEdit(horizontalLayoutWidget);
         searchLineEdit->setObjectName("searchLineEdit");
 
         horizontalLayout->addWidget(searchLineEdit);
-
-        pushButton = new QPushButton(horizontalLayoutWidget);
-        pushButton->setObjectName("pushButton");
-
-        horizontalLayout->addWidget(pushButton);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
@@ -131,28 +203,27 @@ public:
 
         zoomOutButton = new QPushButton(horizontalLayoutWidget);
         zoomOutButton->setObjectName("zoomOutButton");
+        zoomOutButton->setFont(font3);
+        zoomOutButton->setStyleSheet(QString::fromUtf8("image: url(:/small.png);"));
 
         horizontalLayout->addWidget(zoomOutButton);
 
         zoomInButton = new QPushButton(horizontalLayoutWidget);
         zoomInButton->setObjectName("zoomInButton");
+        zoomInButton->setFont(font3);
+        zoomInButton->setStyleSheet(QString::fromUtf8("image: url(:/big.png);"));
 
         horizontalLayout->addWidget(zoomInButton);
 
         panCheckBox = new QCheckBox(horizontalLayoutWidget);
         panCheckBox->setObjectName("panCheckBox");
+        panCheckBox->setFont(font3);
 
         horizontalLayout->addWidget(panCheckBox);
 
 
         verticalLayout->addWidget(frame);
 
-        widget = new MapWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, 80, 961, 561));
-        QFont font1;
-        font1.setPointSize(16);
-        widget->setFont(font1);
         GPSWindow->setCentralWidget(centralwidget);
 
         retranslateUi(GPSWindow);
@@ -163,12 +234,14 @@ public:
     void retranslateUi(QMainWindow *GPSWindow)
     {
         GPSWindow->setWindowTitle(QCoreApplication::translate("GPSWindow", "MainWindow", nullptr));
+        label->setText(QCoreApplication::translate("GPSWindow", "\347\202\271\345\207\273\346\270\205\351\231\244\357\274\232", nullptr));
+        clearbn->setText(QString());
         startlabel->setText(QCoreApplication::translate("GPSWindow", " \350\256\276\347\275\256\350\265\267\347\202\271\357\274\232", nullptr));
         endlabel->setText(QCoreApplication::translate("GPSWindow", " \350\256\276\347\275\256\347\273\210\347\202\271\357\274\232", nullptr));
         jisuan->setText(QCoreApplication::translate("GPSWindow", "\350\256\241\347\256\227\347\273\230\345\210\266\350\267\257\345\276\204", nullptr));
-        pushButton->setText(QCoreApplication::translate("GPSWindow", "\346\220\234\347\264\242\345\234\260\347\202\271", nullptr));
-        zoomOutButton->setText(QCoreApplication::translate("GPSWindow", "\347\274\251\345\260\217\345\234\260\345\233\276", nullptr));
-        zoomInButton->setText(QCoreApplication::translate("GPSWindow", "\346\224\276\345\244\247\345\234\260\345\233\276", nullptr));
+        label_2->setText(QCoreApplication::translate("GPSWindow", "\346\220\234\347\264\242\344\275\215\347\275\256", nullptr));
+        zoomOutButton->setText(QString());
+        zoomInButton->setText(QString());
         panCheckBox->setText(QCoreApplication::translate("GPSWindow", "\347\247\273\345\212\250\346\250\241\345\274\217", nullptr));
     } // retranslateUi
 

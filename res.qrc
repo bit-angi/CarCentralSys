@@ -17,5 +17,7 @@
         <file>his.png</file>
         <file alias="map">map (3)(1).osm</file>
         <file>mu.png</file>
+        <file>musicicon.png</file>
+        <file alias="cont">cont.png</file>
     </qresource>
 </RCC>

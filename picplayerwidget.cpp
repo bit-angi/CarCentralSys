@@ -44,6 +44,8 @@ PicPlayerWidget::PicPlayerWidget():
 
     // 设置按钮样式
     QString buttonStyle = "QPushButton { background-color: gray; color: black; font-weight: bold; }";
+    QString buttonStyle_next = "QPushButton { image: url(:/images/images/right.png);}";
+    QString buttonStyle_prev = "QPushButton { image: url(:/images/images/left.png);}";
     button_open.setGeometry(843,10,100,30);
     button_open.setStyleSheet(buttonStyle);
     connect(&button_open,SIGNAL(clicked(bool)),this,SLOT(Onbutton_open_Clicked()));
@@ -68,12 +70,12 @@ PicPlayerWidget::PicPlayerWidget():
     button_min.setStyleSheet(buttonStyle);
     connect(&button_min,SIGNAL(clicked(bool)),this,SLOT(Onbutton_min_Clicked()));
 
-    button_prev.setGeometry(492,10,100,30);
-    button_prev.setStyleSheet(buttonStyle);
+    button_prev.setGeometry(0,150,50,60);
+    button_prev.setStyleSheet(buttonStyle_prev);
     connect(&button_prev, SIGNAL(clicked(bool)), this, SLOT(Onbutton_prev_Clicked()));
 
-    button_next.setGeometry(609,10,100,30);
-    button_next.setStyleSheet(buttonStyle);
+    button_next.setGeometry(450,150,50,60);
+    button_next.setStyleSheet(buttonStyle_next);
     connect(&button_next, SIGNAL(clicked(bool)), this, SLOT(Onbutton_next_Clicked()));
 
 

@@ -4,6 +4,7 @@ debug/chatwindow.o
 debug/gpswindow.o
 debug/homewindow.o
 debug/http.o
+debug/littlepicwidget.o
 debug/login.o
 debug/lrcwidget.o
 debug/main.o
@@ -17,6 +18,7 @@ debug/speech.o
 debug/videowindow.o
 debug/widget.o
 debug/qrc_Resources.o
+debug/qrc_background.o
 debug/qrc_img.o
 debug/qrc_pic.o
 debug/qrc_res.o
@@ -26,6 +28,7 @@ debug/moc_MapWidget.o
 debug/moc_chatwindow.o
 debug/moc_gpswindow.o
 debug/moc_homewindow.o
+debug/moc_littlepicwidget.o
 debug/moc_login.o
 debug/moc_lrcwidget.o
 debug/moc_mainwindow.o

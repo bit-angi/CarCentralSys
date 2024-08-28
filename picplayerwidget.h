@@ -33,7 +33,7 @@ public:
     explicit PicPlayerWidget();
     ~PicPlayerWidget();
 
-private:
+public:
     Ui::PicPlayerWidget *ui;
 
     QPixmap pix;
@@ -82,7 +82,7 @@ private:
     QMap<QString, QPixmap> imageCache; // 图片缓存
 
 
-private slots:
+public slots:
     void Onbutton_min_Clicked();
     void Onbutton_max_Clicked();
     void Onbutton_left_Clicked();
