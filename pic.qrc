@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>setting2.png</file>
+        <file>setting1.png</file>
+        <file>home.png</file>
+        <file>weather.png</file>
+        <file>map.png</file>
+        <file>media.png</file>
+        <file>tools.png</file>
+        <file>news.png</file>
+        <file>icon_media_image.png</file>
+        <file>last.png</file>
+        <file>next.png</file>
+        <file>run.png</file>
+        <file>music_pic.png</file>
+        <file>image.png.png</file>
+    </qresource>
+</RCC>

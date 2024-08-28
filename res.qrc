@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/aqi.png</file>
+        <file>res/background.png</file>
+        <file>res/citycode-2019-08-23.json</file>
+        <file>res/close.png</file>
+        <file>res/humidity.png</file>
+        <file>res/mic.png</file>
+        <file>res/pm25.png</file>
+        <file>res/search.png</file>
+        <file>res/sunrise.png</file>
+        <file>res/wind.png</file>
+        <file alias="emoji">emoij.txt</file>
+        <file alias="eye">eyes_open.png</file>
+        <file alias="wx">weichat.png</file>
+        <file>biaoq.png</file>
+        <file>his.png</file>
+        <file alias="map">map (3)(1).osm</file>
+        <file>mu.png</file>
+    </qresource>
+</RCC>

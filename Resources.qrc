@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>open.png</file>
+        <file>pause.png</file>
+        <file>play.png</file>
+        <file>cannotplay.png</file>
+        <file>backward.png</file>
+        <file>forward.png</file>
+        <file>muted.png</file>
+        <file>notmuted.png</file>
+        <file>stop.png</file>
+        <file>cannotbackward.png</file>
+        <file>cannotforward.png</file>
+    </qresource>
+</RCC>
