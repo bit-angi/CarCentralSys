@@ -1,6 +1,8 @@
 release/MapWidget.o
 release/audio.o
+release/chatserver.o
 release/chatwindow.o
+release/findmima.o
 release/gpswindow.o
 release/homewindow.o
 release/http.o
@@ -20,12 +22,16 @@ release/widget.o
 release/qrc_Resources.o
 release/qrc_background.o
 release/qrc_img.o
+release/qrc_main.o
+release/qrc_new.o
 release/qrc_pic.o
 release/qrc_res.o
 release/qrc_res1.o
 release/moc_ClickableLabel.o
 release/moc_MapWidget.o
+release/moc_chatserver.o
 release/moc_chatwindow.o
+release/moc_findmima.o
 release/moc_gpswindow.o
 release/moc_homewindow.o
 release/moc_littlepicwidget.o

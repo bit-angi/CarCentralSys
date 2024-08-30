@@ -137,7 +137,8 @@ font-weight:3px</string>
     <property name="styleSheet">
      <string notr="true">color:white;
 font: 16pt &quot;黑体&quot;;
-font-weight:3px</string>
+font-weight:3px;
+background-color:transparent;</string>
     </property>
     <property name="text">
      <string>ip地址</string>
@@ -206,7 +207,9 @@ cusor:pointer;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color:white;
-font: 14pt &quot;黑体&quot;;</string>
+font: 16pt &quot;黑体&quot;;
+font-weight:3px;
+background-color:transparent;</string>
     </property>
     <property name="text">
      <string>在线人数: </string>
@@ -283,7 +286,8 @@ font-weight:20px;</string>
     <property name="styleSheet">
      <string notr="true">color:white;
 font: 16pt &quot;黑体&quot;;
-font-weight:3px</string>
+font-weight:3px;
+background-color:transparent;</string>
     </property>
     <property name="text">
      <string>端口号</string>

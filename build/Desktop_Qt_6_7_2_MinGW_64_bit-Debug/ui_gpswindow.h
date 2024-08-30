@@ -10,6 +10,7 @@
 #define UI_GPSWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFrame>
@@ -40,6 +41,7 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QWidget *widget_3;
     QListView *listView;
+    QPushButton *pushButton_3;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QFrame *frame_2;
@@ -123,6 +125,15 @@ public:
         listView->setStyleSheet(QString::fromUtf8("background-color: white;\n"
 "color: black;\n"
 "font-size: 12pt;"));
+        pushButton_3 = new QPushButton(widget_2);
+        pushButton_3->setObjectName("pushButton_3");
+        pushButton_3->setGeometry(QRect(0, 170, 71, 31));
+        pushButton_3->setStyleSheet(QString::fromUtf8("border-radius:30px;\n"
+"background-color:rgba(255,255,255,0.8)"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/res/mic.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        pushButton_3->setIcon(icon);
+        pushButton_3->setIconSize(QSize(25, 25));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
         verticalLayoutWidget->setGeometry(QRect(1, 0, 961, 81));
@@ -236,6 +247,7 @@ public:
         GPSWindow->setWindowTitle(QCoreApplication::translate("GPSWindow", "MainWindow", nullptr));
         label->setText(QCoreApplication::translate("GPSWindow", "\347\202\271\345\207\273\346\270\205\351\231\244\357\274\232", nullptr));
         clearbn->setText(QString());
+        pushButton_3->setText(QString());
         startlabel->setText(QCoreApplication::translate("GPSWindow", " \350\256\276\347\275\256\350\265\267\347\202\271\357\274\232", nullptr));
         endlabel->setText(QCoreApplication::translate("GPSWindow", " \350\256\276\347\275\256\347\273\210\347\202\271\357\274\232", nullptr));
         jisuan->setText(QCoreApplication::translate("GPSWindow", "\350\256\241\347\256\227\347\273\230\345\210\266\350\267\257\345\276\204", nullptr));

@@ -62,7 +62,7 @@ MusicWindow::MusicWindow(QWidget *parent)
 {
     ui->setupUi(this);
     initializeFavorites();
-
+    loadFavorites();
     QPixmap pixmap(":/images/images/KK.jpg");
     ui->label->setPixmap(pixmap.scaled(ui->label->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 
@@ -623,6 +623,7 @@ void MusicWindow::on_love_button_clicked()
     for (const QJsonValue &value : favorites) {
         if (value.toObject() == currentSong) {
             QMessageBox::information(this, "Info", "Song already in favorites.");
+            loadFavorites();  // 更新显示
             return;
         }
     }

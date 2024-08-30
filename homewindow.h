@@ -24,10 +24,18 @@ signals:
     void nextRequested();
     void previousRequested();
     void setSongRequested(const QString &songPath);
+    void daohang() ;
+    void yinyue();
+    void chat();
 private slots:
     void on_pushButton_8_clicked();
     void on_pushButton_10_clicked();
     void on_pushButton_9_clicked();
+    void on_pushButton_3_clicked();
+    void on_pushButton_3_pressed();
+    void on_pushButton_3_released();
+public:
+    Audio *audio;
 };
 
 #endif // HOMEWINDOW_H

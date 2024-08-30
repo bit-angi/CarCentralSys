@@ -21,7 +21,17 @@ MainWindow::MainWindow(QWidget *parent)
     this->musicwindow = NULL;
 
     homewindow = new HomeWindow(this->ui->widget);
+    connect(homewindow,&HomeWindow::daohang,this,[=]() {
+        on_pushButton_13_clicked();
+    });
+    connect(homewindow,&HomeWindow::chat,this,[=]() {
+        on_pushButton_2_clicked();
+    });
+    connect(homewindow,&HomeWindow::yinyue,this,[=]() {
+        on_pushButton_19_clicked();
+    });
     homewindow->show();
+    homewindow->raise();
     this->on_pushButton_44_clicked();
 }
 
@@ -36,6 +46,7 @@ void MainWindow::on_pushButton_clicked()
     this->ui->widget->show();
     this->weatherwindow = new MainWindow2(this->ui->widget);
     this->weatherwindow->show();
+    this->weatherwindow->raise();
 }
 
 
@@ -45,11 +56,13 @@ void MainWindow::on_pushButton_2_clicked()
     this->ui->widget->show();
     this->chatwindow = new ChatWindow(this->ui->widget);
     this->chatwindow->show();
+        this->chatwindow->raise();
 }
 
 
 void MainWindow::on_pushButton_44_clicked()
 {
+    closeOtherWindows();
     homewindow->raise();
     if (this->musicwindow) {
         this->homewindow->ui->label_14->setText(this->musicwindow->ui->labCurMedia->text());
@@ -62,11 +75,15 @@ void MainWindow::on_pushButton_16_clicked()
     this->ui->widget->show();
     this->videowindow = new VideoWindow(this->ui->widget);
     this->videowindow->show();
+    this->videowindow->raise();
 }
 
 void MainWindow::closeOtherWindows()
 {
-    if (this->videowindow) this->videowindow->hide();
+    if (this->videowindow) {
+        this->videowindow->close();
+        this->videowindow->pVideoWidget->close();
+    }
 }
 
 

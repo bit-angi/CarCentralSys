@@ -54,7 +54,7 @@ private slots:
 
     void endPlay(QMediaPlayer::PlaybackState state);
 
-private:
+public:
     Ui::VideoWindow* ui;
     QMediaPlayer* pPlayer;
     QVideoWidget* pVideoWidget;

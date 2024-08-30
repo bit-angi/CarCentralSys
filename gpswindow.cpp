@@ -1,4 +1,5 @@
 #include "gpsWindow.h"
+#include "speech.h"
 #include "ui_gpswindow.h"
 #include <QPainter>
 #include <QFile>
@@ -424,7 +425,34 @@ void GPSWindow::updateMap() {
     ui->widget->setFilteredWays(tempFilteredWays);
 }
 
+void GPSWindow::on_pushButton_3_pressed()
+{
+    ui->pushButton_3->setText("松开识别");
+    //开始录音
+    audio = new Audio;
+    audio->startAudio(".\\file");
+}
 
+
+
+void GPSWindow::on_pushButton_3_released()
+{
+    audio->stopAudio();
+    //修改按钮文字
+    ui->pushButton_3->setText("开始识别");
+    //开始识别
+    Speech m_speech;
+    QString text = m_speech.speechIdentify("./file");
+    ui->pushButton_3->setText("按住说话");
+    qDebug() <<"hh"<< text;
+    if (text.contains("从") && text.contains("到")) {
+        this->ui->startedit->setText(text.mid(text.indexOf("从") + 1, text.indexOf("到") - text.indexOf("从") -1 ));
+        this->ui->endedit->setText(text.mid(text.indexOf("到") + 1,text.indexOf("的") - text.indexOf("到") -1 ));
+        QString startPlace = ui->startedit->text();
+        QString endPlace = ui->endedit->text();
+        ui->widget->calculateAndDisplayShortestPath(startPlace, endPlace);
+    }
+}
 
 
 

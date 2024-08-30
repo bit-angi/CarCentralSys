@@ -26,6 +26,8 @@ private slots:
     void on_btn_regist_clicked();
     void on_pushButton_clicked();
 
+    void on_btn_edit_pwd_clicked();
+
 signals :
     void newSignal();
 private:

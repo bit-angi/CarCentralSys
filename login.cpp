@@ -2,6 +2,7 @@
 #include "ui_login.h"
 #include <QSqlQuery>
 #include <qmessagebox.h>
+#include "findmima.h"
 #include "register.h"
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -101,6 +102,60 @@ void Login::on_pushButton_clicked()
     }
     else {
         ui->lineEdit_passwd->setEchoMode(QLineEdit::Password);
+    }
+}
+
+
+void Login::on_btn_edit_pwd_clicked()
+{
+    FindMima r;
+    // r.setParent(this);      //设置父对象
+    r.exec();    //注册页面r，仅仅获取信息.
+    r.database = db;
+    //    get_user_info();
+    if(user_info.username.isEmpty() || user_info.password.isEmpty()){
+        // QMessageBox::information(this,tr("提示"),tr("请输入用户名和密码！"));
+    }
+    else
+    {
+        bool exitFlag = false;       //判断用户是否存在
+
+        if(!db->open())
+        {
+            qDebug() << "database open fail regist!";
+        }
+        else
+        {
+            QSqlQuery query;
+            qDebug() << "database open success regist!";
+            query.exec("select * from userInfo");
+            while (query.next())
+            {
+                QString username = query.value(0).toString();
+                QString passwd = query.value(1).toString();
+                qDebug() << "regist userName:::"<< username << "passwd:::" << passwd;
+
+                if(username == user_info.username){
+                    exitFlag = true;              //用户存在
+                }
+            }
+
+            if(exitFlag == false){
+                qDebug()<<"regist:::"<<query.lastQuery();
+                QMessageBox::information(this,tr("提示"),tr("注册成功！"));
+
+                query.exec("select * from userInfo");
+                while (query.next())
+                {
+                    QString username = query.value(0).toString();
+                    QString passwd = query.value(1).toString();
+                    qDebug() << "regist username:::"<< username << "passwd:::" << passwd;
+                }
+            }else{
+                QMessageBox::warning(this,tr("警告"),tr("用户已存在！"));
+            }
+        }
+        db->close();
     }
 }
 

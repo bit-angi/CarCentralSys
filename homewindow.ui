@@ -186,12 +186,12 @@ color: rgb(255, 255, 255);</string>
        <rect>
         <x>0</x>
         <y>80</y>
-        <width>101</width>
+        <width>151</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;湿度……&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;湿度60% 空气质量优&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -297,7 +297,7 @@ color: rgb(32, 59, 237);</string>
       <rect>
        <x>30</x>
        <y>430</y>
-       <width>111</width>
+       <width>143</width>
        <height>41</height>
       </rect>
      </property>
@@ -429,14 +429,44 @@ border-radius: 15px;</string>
      <string notr="true">background-color: transparent</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>480</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius:30px;
+background-color:rgba(255,255,255,0.8)</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/res/mic.png</normaloff>:/res/mic.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+   </widget>
    <zorder>label_7</zorder>
    <zorder>pushButton_7</zorder>
    <zorder>frame</zorder>
    <zorder>label_5</zorder>
    <zorder>label_6</zorder>
    <zorder>pic_widget</zorder>
+   <zorder>pushButton_3</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -10,6 +10,7 @@
 #define UI_HOMEWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
@@ -50,6 +51,7 @@ public:
     QLabel *label_6;
     QLabel *label_7;
     QWidget *pic_widget;
+    QPushButton *pushButton_3;
 
     void setupUi(QMainWindow *HomeWindow)
     {
@@ -115,7 +117,7 @@ public:
         label->setFont(font2);
         label_12 = new QLabel(frame_3);
         label_12->setObjectName("label_12");
-        label_12->setGeometry(QRect(0, 80, 101, 31));
+        label_12->setGeometry(QRect(0, 80, 151, 31));
         label_13 = new QLabel(frame);
         label_13->setObjectName("label_13");
         label_13->setGeometry(QRect(180, 380, 61, 61));
@@ -161,7 +163,7 @@ public:
         label_14->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
         horizontalLayoutWidget = new QWidget(frame);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(30, 430, 111, 41));
+        horizontalLayoutWidget->setGeometry(QRect(30, 430, 143, 41));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -216,6 +218,15 @@ public:
         pic_widget->setObjectName("pic_widget");
         pic_widget->setGeometry(QRect(410, 50, 501, 400));
         pic_widget->setStyleSheet(QString::fromUtf8("background-color: transparent"));
+        pushButton_3 = new QPushButton(centralwidget);
+        pushButton_3->setObjectName("pushButton_3");
+        pushButton_3->setGeometry(QRect(620, 480, 71, 61));
+        pushButton_3->setStyleSheet(QString::fromUtf8("border-radius:30px;\n"
+"background-color:rgba(255,255,255,0.8)"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/res/mic.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        pushButton_3->setIcon(icon);
+        pushButton_3->setIconSize(QSize(25, 25));
         HomeWindow->setCentralWidget(centralwidget);
         label_7->raise();
         pushButton_7->raise();
@@ -223,6 +234,7 @@ public:
         label_5->raise();
         label_6->raise();
         pic_widget->raise();
+        pushButton_3->raise();
 
         retranslateUi(HomeWindow);
 
@@ -239,7 +251,7 @@ public:
         label_10->setText(QCoreApplication::translate("HomeWindow", "<html><head/><body><p><span style=\" font-size:22pt;\">\345\214\227\344\272\254\345\270\202</span></p></body></html>", nullptr));
         label_11->setText(QCoreApplication::translate("HomeWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">\344\273\212\346\227\245\345\244\251\346\260\224\346\231\264\346\234\227</span></p></body></html>", nullptr));
         label->setText(QCoreApplication::translate("HomeWindow", "<html><head/><body><p><span style=\" font-size:24pt; color:#ffffff;\">21\342\204\203</span></p></body></html>", nullptr));
-        label_12->setText(QCoreApplication::translate("HomeWindow", "<html><head/><body><p>\346\271\277\345\272\246\342\200\246\342\200\246</p></body></html>", nullptr));
+        label_12->setText(QCoreApplication::translate("HomeWindow", "<html><head/><body><p>\346\271\277\345\272\24660% \347\251\272\346\260\224\350\264\250\351\207\217\344\274\230</p></body></html>", nullptr));
         label_13->setText(QString());
         time_label->setText(QCoreApplication::translate("HomeWindow", "<html><head/><body><p><span style=\" font-size:48pt;\">00:00</span></p></body></html>", nullptr));
         day_label->setText(QCoreApplication::translate("HomeWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">2024-08-20</span></p></body></html>", nullptr));
@@ -250,6 +262,7 @@ public:
         label_5->setText(QString());
         label_6->setText(QCoreApplication::translate("HomeWindow", "TextLabel", nullptr));
         label_7->setText(QCoreApplication::translate("HomeWindow", "TextLabel", nullptr));
+        pushButton_3->setText(QString());
     } // retranslateUi
 
 };

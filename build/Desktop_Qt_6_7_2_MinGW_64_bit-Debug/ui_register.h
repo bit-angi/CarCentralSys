@@ -28,6 +28,8 @@ public:
     QLabel *labelPassword;
     QLineEdit *lineEditPasswordCheck;
     QLineEdit *lineEditPassword;
+    QLabel *labelPasswordCheck_2;
+    QLineEdit *lineEditPasswordCheck_2;
 
     void setupUi(QWidget *Register)
     {
@@ -59,6 +61,13 @@ public:
         lineEditPassword->setObjectName("lineEditPassword");
         lineEditPassword->setGeometry(QRect(120, 80, 91, 20));
         lineEditPassword->setStyleSheet(QString::fromUtf8("background-image: url(:/images/backw.png);"));
+        labelPasswordCheck_2 = new QLabel(Register);
+        labelPasswordCheck_2->setObjectName("labelPasswordCheck_2");
+        labelPasswordCheck_2->setGeometry(QRect(30, 170, 72, 20));
+        lineEditPasswordCheck_2 = new QLineEdit(Register);
+        lineEditPasswordCheck_2->setObjectName("lineEditPasswordCheck_2");
+        lineEditPasswordCheck_2->setGeometry(QRect(120, 170, 91, 20));
+        lineEditPasswordCheck_2->setStyleSheet(QString::fromUtf8("background-image: url(:/images/backw.png);"));
 
         retranslateUi(Register);
 
@@ -72,6 +81,8 @@ public:
         labelPasswordCheck->setText(QCoreApplication::translate("Register", "\347\241\256\350\256\244\345\257\206\347\240\201", nullptr));
         labelName->setText(QCoreApplication::translate("Register", "\347\224\250\346\210\267\345\220\215", nullptr));
         labelPassword->setText(QCoreApplication::translate("Register", "\345\257\206\347\240\201", nullptr));
+        labelPasswordCheck_2->setText(QCoreApplication::translate("Register", "\351\202\256\347\256\261", nullptr));
+        lineEditPasswordCheck_2->setText(QString());
     } // retranslateUi
 
 };

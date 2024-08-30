@@ -6,6 +6,7 @@
 #include <qcompleter.h>
 #include <qstringlistmodel.h>
 #include "MapWidget.h"  // 引入自定义的MapWidget组件
+#include "audio.h"
 
 namespace Ui {
 class GPSWindow;
@@ -24,7 +25,8 @@ public:
     void parseNodeElement(const QDomElement &element);  // 解析节点元素
     QStringListModel *model;  // 声明 QStringListModel 成员变量
     void updateSuggestions(const QString &text, QStringListModel *model);
-private:
+    Audio* audio;
+public:
     Ui::GPSWindow *ui;
     QVector<Way> allWays;
     QVector<Way> filteredWays;
@@ -59,6 +61,9 @@ private slots:
     void clearListView();
     void addInformation(const QString &info);
 
+    void on_pushButton_3_pressed();
+    void on_pushButton_3_released();
 };
+
 
 #endif // GPSWindow_H

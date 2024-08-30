@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include "musicwindow.h"
 #include "homewindow.h"
+#include "videowindow.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -20,12 +21,12 @@ public:
     ~MainWindow();
     QMainWindow *weatherwindow;
     QMainWindow *chatwindow;
-    QMainWindow *videowindow;
+    VideoWindow *videowindow;
     QMainWindow *gpswindow;
     HomeWindow* homewindow;
     QWidget *picwindow;
     MusicWindow *musicwindow;
-private slots:
+public slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();

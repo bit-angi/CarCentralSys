@@ -41,15 +41,17 @@ void Register::setParent(Login *dialog)
 
 
 
-//注册函数.仅仅获取相关值，不做检测和数据库操作
+/**
+ * 注册函数
+ * @brief Register::on_registerCheckButton_clicked
+ */
 void Register::on_registerCheckButton_clicked()
 {
-//    pWidget->user_info.username = ui->lineEditName->text();
-//    pWidget->user_info.password = ui->lineEditPassword->text();
     QSqlQuery query ;
-    query.prepare("insert into userinfo values (:name , :pwd)");
+    query.prepare("insert into userinfo values (:name , :pwd, :yx)");
     query.bindValue(":name",ui->lineEditName->text());
     query.bindValue(":pwd",ui->lineEditPassword->text());
+    query.bindValue(":yx",ui->lineEditPasswordCheck_2->text());
     if (query.exec())
         QMessageBox::information(this,"info","注册成功");
     else QMessageBox::information(this,"info","注册失败");

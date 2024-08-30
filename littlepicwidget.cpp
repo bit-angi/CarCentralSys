@@ -16,7 +16,7 @@
 #include <QImage>
 #include <QPixmap>
 #include <QLabel>
-
+#include <QTransform>
 
 LittlePicWidget::LittlePicWidget():
     paint(5,5,500,400),
@@ -314,7 +314,16 @@ void LittlePicWidget::mouseMoveEvent(QMouseEvent *event)
 {
     if (dragging) {
         QPoint delta = event->pos() - lastPos;
-        imageOffset += delta;
+        // 创建变换矩阵
+        QTransform transform;
+        transform.rotate(angel);
+        // 反向应用旋转变换来获得正确的拖动方向
+        QPointF correctedDelta = transform.inverted().map(delta);
+
+        // 更新图像偏移量
+        imageOffset += QPoint(correctedDelta.toPoint());
+
+        // imageOffset += delta;
         lastPos = event->pos();
         update();
     }

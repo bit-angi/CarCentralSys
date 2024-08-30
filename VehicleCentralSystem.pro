@@ -11,7 +11,9 @@ CONFIG += c++17
 SOURCES += \
     MapWidget.cpp \
     audio.cpp \
+    chatserver.cpp \
     chatwindow.cpp \
+    findmima.cpp \
     gpswindow.cpp \
     homewindow.cpp \
     http.cpp \
@@ -33,7 +35,9 @@ SOURCES += \
 HEADERS += \
     ClickableLabel.h \
     MapWidget.h \
+    chatserver.h \
     chatwindow.h \
+    findmima.h \
     gpswindow.h \
     homewindow.h \
     littlepicwidget.h \
@@ -55,6 +59,7 @@ HEADERS += \
 
 FORMS += \
     chatwindow.ui \
+    findmima.ui \
     gpswindow.ui \
     homewindow.ui \
     littlepicwidget.ui \
@@ -78,6 +83,8 @@ RESOURCES += \
     Resources.qrc \
     background.qrc \
     img.qrc \
+    main.qrc \
+    new.qrc \
     pic.qrc \
     res.qrc \
     res1.qrc

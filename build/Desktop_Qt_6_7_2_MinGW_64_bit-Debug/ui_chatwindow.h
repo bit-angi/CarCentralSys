@@ -94,7 +94,8 @@ public:
         label->setGeometry(QRect(765, 77, 63, 21));
         label->setStyleSheet(QString::fromUtf8("color:white;\n"
 "font: 16pt \"\351\273\221\344\275\223\";\n"
-"font-weight:3px"));
+"font-weight:3px;\n"
+"background-color:transparent;"));
         lineEdit_2 = new QLineEdit(centralwidget);
         lineEdit_2->setObjectName("lineEdit_2");
         lineEdit_2->setGeometry(QRect(863, 111, 91, 22));
@@ -117,7 +118,9 @@ public:
         label_3->setObjectName("label_3");
         label_3->setGeometry(QRect(770, 180, 291, 31));
         label_3->setStyleSheet(QString::fromUtf8("color:white;\n"
-"font: 14pt \"\351\273\221\344\275\223\";"));
+"font: 16pt \"\351\273\221\344\275\223\";\n"
+"font-weight:3px;\n"
+"background-color:transparent;"));
         pushButton_5 = new QPushButton(centralwidget);
         pushButton_5->setObjectName("pushButton_5");
         pushButton_5->setGeometry(QRect(80, 400, 28, 25));
@@ -143,7 +146,8 @@ public:
         label_2->setGeometry(QRect(765, 111, 63, 21));
         label_2->setStyleSheet(QString::fromUtf8("color:white;\n"
 "font: 16pt \"\351\273\221\344\275\223\";\n"
-"font-weight:3px"));
+"font-weight:3px;\n"
+"background-color:transparent;"));
         textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName("textEdit");
         textEdit->setGeometry(QRect(30, 70, 701, 291));

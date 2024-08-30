@@ -298,7 +298,6 @@ void lrcwidget::showLyric()
     } else {
         qDebug() << "Parent widget is NULL.";
     }
-
     disconnect(animation, &QPropertyAnimation::finished, this, &QWidget::hide);
     // 设置动画起始位置和结束位置
     qDebug() << 5.1 << Qt::endl;

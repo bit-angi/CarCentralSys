@@ -73,3 +73,42 @@ void HomeWindow::on_pushButton_9_clicked()
     emit this->nextRequested();
 }
 
+
+void HomeWindow::on_pushButton_3_clicked()
+{
+
+}
+
+void HomeWindow::on_pushButton_3_pressed()
+{
+    ui->pushButton_3->setText("松开识别");
+    //开始录音
+    audio = new Audio;
+    audio->startAudio(".\\file");
+}
+
+
+
+void HomeWindow::on_pushButton_3_released()
+{
+    audio->stopAudio();
+    //修改按钮文字
+    ui->pushButton_3->setText("开始识别");
+    //开始识别
+    Speech m_speech;
+    QString text = m_speech.speechIdentify("./file");
+    ui->pushButton_3->setText("按住说话");
+    qDebug() <<"hh"<< text;
+    if (text.contains("歌")) {
+        this->on_pushButton_9_clicked();
+    }
+    else if (text.contains("导航")) {
+        emit daohang();
+    }
+    else if (text.contains("音乐")) {
+        emit yinyue();
+    }
+    else if (text.contains("聊天") || text.contains("通讯")) {
+        emit chat();
+    }
+}

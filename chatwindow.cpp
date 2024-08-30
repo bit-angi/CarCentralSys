@@ -8,8 +8,16 @@
 #include <QMenu>
 #include<QGridLayout>
 #include "login.h"
+#include "speech.h"
 #include <QFile>
+#include <QFileDialog>
 #include <QKeyEvent>
+
+/**
+ * 初始化聊天客户端和服务端
+ * @brief ChatWindow::ChatWindow
+ * @param parent
+ */
 ChatWindow::ChatWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::ChatWindow)
@@ -18,52 +26,23 @@ ChatWindow::ChatWindow(QWidget *parent)
     ui->setupUi(this);
     // 连接数据库
     this->initSql();
-
     this->login = new Login(this);
     this->login->show();
     qDebug() << this->username ;
-    this->socket = new QTcpSocket();
+
     // 本地测试，选择本机地址和8888端口
     QString ip = "127.0.0.1";
+    int port = 8888;
     ui->lineEdit->setText("127.0.0.1");
     ui->lineEdit_2->setText("8888");
-    int port = 8888;
-
-    server = new QTcpServer() ;
+    threadPool = new QThreadPool();
+    threadPool->setMaxThreadCount(10);
+    server = new ChatServer();
     if (server->listen(QHostAddress::Any,this->serverport)) {
-        connect(server,&QTcpServer::newConnection,this,[=]() {
-            // 获得客户端的socket套接字
-            QTcpSocket *clientSocket = server->nextPendingConnection();
-            this->clientSockets.push_back(clientSocket);
-            if (clientSocket) {
-                connect(clientSocket,&QTcpSocket::readyRead,this,[=]() {
-                    char buffer[1024] = {0};
-                    clientSocket->read(buffer,1024);
-                    qDebug() <<"bb"<< buffer;
-                    QString str = QString(buffer);
-                    if (str.endsWith("已上线\n")) {
-                        userList.push_back(str.left(str.indexOf("已上线\n")));
-                        char buffer1[1024] = {0};
-                        QString msg = QString("newuser"+ (QString::number(this->userList.size()) + this->username) + QString(buffer));
-                        msg += "|";
-                        for (QString username : userList) {
-                            msg += " " + username;
-                        }
-                        strcpy(buffer1 ,msg.toStdString().c_str());
-                        for (QTcpSocket *socket : clientSockets) {
-                            socket->write(buffer1,1024);
-                        }
-                    }
-                    else {
-                        for (QTcpSocket *socket : clientSockets) {
-                            socket->write(buffer,1024);
-                        }
-                    }
-                });
-            }
-        });
-
+        // connect(server, &QTcpServer::newConnection, this, &ChatWindow::onNewConnection);
     }
+    // 创建一个新的socket
+    this->socket = new QTcpSocket();
     this->socket->connectToHost(ip,port);
     if (!this->socket->waitForConnected(30000)) {
         QMessageBox::information(this,"info","连接失败");
@@ -74,17 +53,16 @@ ChatWindow::ChatWindow(QWidget *parent)
             char buffer[1024] = {0};
             this->socket->read(buffer,1024);
             qDebug() << buffer;
-            if (QString(buffer).startsWith("newuser")) {
-
-                this->ui->label_3->setText(QString("在线人数：") + QString(buffer)[7]);
-                this->addMeg(QString(buffer).split("|")[0].right(8));
-                ui->listWidget->clear();
-                qDebug() << "zheli " << buffer;
-                QStringList s = QString(buffer).split("|")[1].split("\n");
+            if (QString(buffer).contains("已上线")) {
+                // 清空用户列表，防止重复
+                this->ui->listWidget->clear();
+                QStringList s = QString(buffer).split("|")[1].split(" ");
+                this->ui->label_3->setText(QString("在线人数：") + QString::number(s.length()-1));
                 for (QString str : s) {
                     if (str.trimmed().length() == 0) continue;
-                    ui->listWidget->addItem(str);
+                    ui->listWidget->addItem(str.trimmed());
                 }
+                this->addMeg(QString(buffer).split("|")[0]);
             }
             else this->addMeg(QString(buffer));
         });
@@ -187,6 +165,25 @@ QVector<QString> ChatWindow::loadEmojis(QString filename)
     return emojis;
 }
 
+bool ChatWindow::saveFile(const QString &filename){
+    QFile file(filename);
+    if(!file.open(QFile::WriteOnly|QFile::Text)){
+        QMessageBox::warning(this,tr("保存文件"),tr("无法保存文件%1:\n%2").arg(filename).arg(file.errorString()));
+
+        return false;
+
+    }
+    QTextStream out(&file);
+    out<<ui->textEdit->toPlainText();
+    return true;
+
+}
+
+// void ChatWindow::broadcastMessage(const QByteArray &message) {
+//     for (QTcpSocket* socket : clientSockets) {
+//         socket->write(message);
+//     }
+// }
 /**
  * 初始化服务器Postgresql数据库
  * @brief ChatWindow::initSql
@@ -245,14 +242,75 @@ void ChatWindow::on_pushButton_2_clicked()
     qDebug() << s ;
 }
 
-void ChatWindow::on_pushButton_3_pressed()
+void ChatWindow::processNewConnection()
 {
+    QTcpSocket* clientSocket = server->nextPendingConnection();
+    if (!clientSocket) {
+        qWarning() << "Failed to get client socket";
+        return;
+    }
+
+    // clientSockets.push_back(clientSocket);
+
+    connect(clientSocket, &QTcpSocket::readyRead, this, [=]() {
+        // QByteArray data = clientSocket->readAll();
+        // QString str = QString(data);
+        char buffer[1024] = {0};
+        clientSocket->read(buffer,1024);
+        QString str = QString(buffer);
+        qDebug() << "sss:" << str;
+        if (str.contains("已上线")) {
+            userList.push_back(str.left(str.indexOf("已上线\n")));
+            QString msg = QString("newuser" + QString::number(userList.size()) + username + str);
+            msg += "|";
+            for (const QString& username : userList) {
+                msg += " " + username;
+            }
+            char buffer[1024] = {0};
+            strcpy(buffer,msg.toStdString().c_str());
+            // for (QTcpSocket* socket : clientSockets) {
+            //     socket->write(buffer);
+            // }
+        } else {
+            QByteArray response = str.toUtf8();
+            // broadcastMessage(response);
+        }
+    });
+
+    connect(clientSocket, &QTcpSocket::disconnected, this, [=]() {
+        clientSocket->deleteLater();
+    });
 
 }
 
-void ChatWindow::on_pushButton_3_clicked()
+/**
+ * 语音命令功能，按住开始录音
+ * @brief MainWindow::on_pushButton_3_pressed
+ */
+void ChatWindow::on_pushButton_3_pressed()
 {
+    ui->pushButton_3->setText("松开识别");
+    //开始录音
+    audio = new Audio;
+    audio->startAudio(".\\file");
+}
 
+/**
+ * 语音命令功能，松开开始调用百度云智能接口进行识别
+ * @brief MainWindow::on_pushButton_3_released
+ */
+void ChatWindow::on_pushButton_3_released()
+{
+    //停止录音
+    audio->stopAudio();
+    //修改按钮文字
+    ui->pushButton_3->setText("开始识别");
+    //开始识别
+    Speech m_speech;
+    QString text = m_speech.speechIdentify("./file");
+    ui->pushButton_3->setText("按住说话");
+    qDebug() <<"hh"<< text;
+    ui->lineEdit_3->setText(text);
 }
 
 
@@ -264,5 +322,24 @@ void ChatWindow::on_pushButton_4_clicked()
 }
 
 
+void ChatWindow::on_pushButton_3_clicked()
+{
+
+}
+
+
+void ChatWindow::on_pushButton_5_clicked()
+{
+    if (ui->textEdit->document()->isEmpty()){
+        QMessageBox::warning(0,tr("警告"),tr("聊天记录为空，无法保存！"),QMessageBox::Ok);
+    }else {
+        QString fname=QFileDialog::getSaveFileName(this,tr("保存聊天记录"),tr("聊天记录"),tr("文本(*.txt);;所有文件(*.*)"));
+        if(!fname.isEmpty()) saveFile(fname);
+    }
+}
+
+void ChatWindow::onNewConnection() {
+
+}
 
 

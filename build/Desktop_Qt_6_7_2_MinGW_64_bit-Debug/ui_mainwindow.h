@@ -58,7 +58,7 @@ public:
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color:rgb(0, 0, 58);\n"
+"	background-color:rgb(32, 59, 237)\n"
 "}"));
         pushButton = new QPushButton(frame_2);
         pushButton->setObjectName("pushButton");
@@ -70,7 +70,7 @@ public:
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color:rgb(0, 0, 58);\n"
+"	background-color:rgb(32, 59, 237)\n"
 "}"));
         pushButton_16 = new QPushButton(frame_2);
         pushButton_16->setObjectName("pushButton_16");
@@ -82,7 +82,7 @@ public:
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color:rgb(0, 0, 58);\n"
+"	background-color:rgb(32, 59, 237)\n"
 "}"));
         pushButton_2 = new QPushButton(frame_2);
         pushButton_2->setObjectName("pushButton_2");
@@ -94,7 +94,7 @@ public:
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color:rgb(0, 0, 58);\n"
+"	background-color:rgb(32, 59, 237)\n"
 "}"));
         pushButton_44 = new QPushButton(frame_2);
         pushButton_44->setObjectName("pushButton_44");
@@ -105,7 +105,7 @@ public:
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color:rgb(0, 0, 58);\n"
+"	background-color: rgb(32, 59, 237)\n"
 "}"));
         pushButton_19 = new QPushButton(frame_2);
         pushButton_19->setObjectName("pushButton_19");
@@ -115,7 +115,7 @@ public:
 "\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color:rgb(0, 0, 58);\n"
+"	background-color:rgb(32, 59, 237)\n"
 "}"));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/musicicon.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);

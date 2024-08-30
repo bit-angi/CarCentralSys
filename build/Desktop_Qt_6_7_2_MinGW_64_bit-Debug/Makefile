@@ -302,6 +302,8 @@ Makefile: ../../VehicleCentralSystem.pro E:/qt/6.7.2/mingw_64/mkspecs/win32-g++/
 		../../Resources.qrc \
 		../../background.qrc \
 		../../img.qrc \
+		../../main.qrc \
+		../../new.qrc \
 		../../pic.qrc \
 		../../res.qrc \
 		../../res1.qrc
@@ -538,6 +540,8 @@ E:/qt/6.7.2/mingw_64/mkspecs/features/build_pass.prf:
 ../../Resources.qrc:
 ../../background.qrc:
 ../../img.qrc:
+../../main.qrc:
+../../new.qrc:
 ../../pic.qrc:
 ../../res.qrc:
 ../../res1.qrc:

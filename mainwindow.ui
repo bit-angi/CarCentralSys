@@ -54,7 +54,7 @@ image: url(:/new/prefix1/map.png);
 }
 
 QPushButton:hover {
-	background-color:rgb(0, 0, 58);
+	background-color:rgb(32, 59, 237)
 }</string>
      </property>
      <property name="text">
@@ -78,7 +78,7 @@ image: url(:/new/prefix1/weather.png);
 }
 
 QPushButton:hover {
-	background-color:rgb(0, 0, 58);
+	background-color:rgb(32, 59, 237)
 }</string>
      </property>
      <property name="text">
@@ -102,7 +102,7 @@ image: url(:/new/prefix1/media.png);
 }
 
 QPushButton:hover {
-	background-color:rgb(0, 0, 58);
+	background-color:rgb(32, 59, 237)
 }</string>
      </property>
      <property name="text">
@@ -126,7 +126,7 @@ image: url(:/new/prefix1/news.png);
 }
 
 QPushButton:hover {
-	background-color:rgb(0, 0, 58);
+	background-color:rgb(32, 59, 237)
 }</string>
      </property>
      <property name="text">
@@ -151,7 +151,7 @@ image: url(:/new/prefix1/home.png);
 }
 
 QPushButton:hover {
-	background-color:rgb(0, 0, 58);
+	background-color: rgb(32, 59, 237)
 }</string>
      </property>
      <property name="text">
@@ -173,7 +173,7 @@ QPushButton:hover {
 
 
 QPushButton:hover {
-	background-color:rgb(0, 0, 58);
+	background-color:rgb(32, 59, 237)
 }</string>
      </property>
      <property name="text">

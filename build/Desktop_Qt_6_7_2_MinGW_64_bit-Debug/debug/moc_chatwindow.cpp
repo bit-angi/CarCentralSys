@@ -42,9 +42,13 @@ constexpr auto qt_meta_stringdata_CLASSChatWindowENDCLASS = QtMocHelpers::string
     "QKeyEvent*",
     "ev",
     "on_pushButton_2_clicked",
+    "processNewConnection",
     "on_pushButton_3_clicked",
     "on_pushButton_3_pressed",
-    "on_pushButton_4_clicked"
+    "on_pushButton_4_clicked",
+    "on_pushButton_3_released",
+    "on_pushButton_5_clicked",
+    "onNewConnection"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -57,7 +61,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSChatWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,16 +69,24 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSChatWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   50,    2, 0x08,    1 /* Private */,
-       3,    1,   51,    2, 0x08,    2 /* Private */,
-       6,    0,   54,    2, 0x08,    4 /* Private */,
-       7,    0,   55,    2, 0x08,    5 /* Private */,
-       8,    0,   56,    2, 0x08,    6 /* Private */,
-       9,    0,   57,    2, 0x08,    7 /* Private */,
+       1,    0,   74,    2, 0x0a,    1 /* Public */,
+       3,    1,   75,    2, 0x0a,    2 /* Public */,
+       6,    0,   78,    2, 0x0a,    4 /* Public */,
+       7,    0,   79,    2, 0x0a,    5 /* Public */,
+       8,    0,   80,    2, 0x0a,    6 /* Public */,
+       9,    0,   81,    2, 0x0a,    7 /* Public */,
+      10,    0,   82,    2, 0x0a,    8 /* Public */,
+      11,    0,   83,    2, 0x0a,    9 /* Public */,
+      12,    0,   84,    2, 0x0a,   10 /* Public */,
+      13,    0,   85,    2, 0x0a,   11 /* Public */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 4,    5,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -99,11 +111,19 @@ Q_CONSTINIT const QMetaObject ChatWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QKeyEvent *, std::false_type>,
         // method 'on_pushButton_2_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'processNewConnection'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_pushButton_3_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_pushButton_3_pressed'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_pushButton_4_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_pushButton_3_released'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_pushButton_5_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onNewConnection'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -118,9 +138,13 @@ void ChatWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->on_pushButton_clicked(); break;
         case 1: _t->keyPressEvent((*reinterpret_cast< std::add_pointer_t<QKeyEvent*>>(_a[1]))); break;
         case 2: _t->on_pushButton_2_clicked(); break;
-        case 3: _t->on_pushButton_3_clicked(); break;
-        case 4: _t->on_pushButton_3_pressed(); break;
-        case 5: _t->on_pushButton_4_clicked(); break;
+        case 3: _t->processNewConnection(); break;
+        case 4: _t->on_pushButton_3_clicked(); break;
+        case 5: _t->on_pushButton_3_pressed(); break;
+        case 6: _t->on_pushButton_4_clicked(); break;
+        case 7: _t->on_pushButton_3_released(); break;
+        case 8: _t->on_pushButton_5_clicked(); break;
+        case 9: _t->onNewConnection(); break;
         default: ;
         }
     }
@@ -145,13 +169,13 @@ int ChatWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 10;
     }
     return _id;
 }
