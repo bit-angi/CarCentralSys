@@ -29,3 +29,5 @@
 
 - 定位导航：
 通过 API 静态获取百度地图，显示地图功能，地图拖动功能。
+![image](https://github.com/user-attachments/assets/229eacb1-82cb-4102-8b2a-9d6bb4a5e2c6)
+
